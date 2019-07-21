@@ -2,9 +2,6 @@
 
 function payWithPaystack() {
 
-
-    
-
     var handler = PaystackPop.setup({ 
         key: 'Your Paystack public key', //put your public key here
         email: 'customer@email.com', //put your customer's email here
