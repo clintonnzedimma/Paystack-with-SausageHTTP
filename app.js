@@ -1,5 +1,3 @@
-
-
 function payWithPaystack() {
 
     var handler = PaystackPop.setup({ 
