@@ -1,8 +1,3 @@
-<?php 
-include 'lib/SausageHTTP.php';
-
-?>
-
 <!DOCTYPE html>
 <html>
 
