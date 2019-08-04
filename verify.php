@@ -1,7 +1,6 @@
 <?php 
 include 'lib/SausageHTTP.php';
 
-//Creating a Sausage
 $client = new SausageHTTP(); //Creating a Sausage Client
 
 
@@ -18,9 +17,9 @@ if(!$_SERVER['REQUEST_METHOD'] == 'POST' || !isset($_POST['reference'])){
 			"METHOD" => 'POST',
 			"HEADER" => array(
 							'Content-Type: application/json', 
-						 	'Authorization: Bearer * Your Paystack Private Key*'
+						 	'Authorization: Bearer *Your Paystack Private Key*'
 						) 
-		]);
+	]);
 
 
 	//Checking Sausage response and decoding it from JSON format to associative array
@@ -34,7 +33,7 @@ if(!$_SERVER['REQUEST_METHOD'] == 'POST' || !isset($_POST['reference'])){
 	 	&& array_key_exists('status', $result['data']) 
 	 	&& ($result['data']['status'] === 'success')) {
 	 		 echo "success";
-	 		 // Perform your neccessary action here.
+	 		 // Perform your necessary action here.
 
 	}else{
 	  echo "failed";
