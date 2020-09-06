@@ -95,18 +95,15 @@ class SausageHTTP
 	}
 
 
+
 	private function sendRequest()
 	{
 			//Sending GET request	
 			if($this->params['METHOD'] == 'GET') {
-
 			    $ch = curl_init(); 
 			    curl_setopt($ch,CURLOPT_URL, trim($this->params['URL'])."?".http_build_query($this->params['OPTIONS']));
 			    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-			 
-			    $output=curl_exec($ch);
-			    curl_close($ch);
-			    return $this->response =  $output;	
+
 			}
 
 
@@ -117,12 +114,19 @@ class SausageHTTP
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 				curl_setopt($ch, CURLOPT_HTTPHEADER, $this->params['HEADER']);
 
-				$request = curl_exec($ch);
-				curl_close($ch);
-				return $this->response =  $request;
 			}
 
 
+		 	$output=curl_exec($ch);
+		 	$e = curl_error($ch);
+			if($e){
+			 	$this->errors[] = $e;
+			 	throw new Exception($this->error_msg_prefix.$e, 1);	
+			}
+					    
+
+		    curl_close($ch);
+		    return $this->response = $output;	
 		
 
 	}
